@@ -1,0 +1,19 @@
+timezone: America/Los_Angeles
+
+_export:
+  db_info:
+    !include : 'config/database.dig'
+    src: inside workflow1 dig file
+    env: Updated env in workflow file
+
++echo_task1:
+  echo>: this is test task!
+
++echo_task2:
+  echo>: ${db_info.global_variable}
+
++echo_task3:
+  echo>: "Source is ${db_info.src} and env is ${db_info.env}"
+
++run_query1:
+  td>: 'queries/example.sql'

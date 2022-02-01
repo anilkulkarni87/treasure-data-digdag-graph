@@ -1,0 +1,27 @@
+digraph {
+	edge [color=red]
+	"c646a57e-4df1-4724-8cce-77cd8f42d24c" [label=root color=firebrick1 penwidth=3.0 shape=box]
+	"c646a57e-4df1-4724-8cce-77cd8f42d24c" -> "1c15fc4e-0750-48ab-8914-6dd6e2ed5f6a"
+	"1c15fc4e-0750-48ab-8914-6dd6e2ed5f6a" -> "1fdc42fe-2385-4bdf-838b-f3dbc612b23d"
+	"1fdc42fe-2385-4bdf-838b-f3dbc612b23d" -> "6b423918-2f25-4494-bc00-789d893173ea"
+	"6b423918-2f25-4494-bc00-789d893173ea" -> "87e66fe7-7390-4378-acaa-6076653af9bd"
+	"87e66fe7-7390-4378-acaa-6076653af9bd" -> "d9a39092-c290-4c32-add7-e1c491dbbb2e"
+	subgraph "cluster-08f2f759-a01b-46d5-a458-913b711b3199" {
+		"1c15fc4e-0750-48ab-8914-6dd6e2ed5f6a" [label="America/Los_Angeles" color=mediumspringgreen penwidth=1.0 shape=box]
+		subgraph "cluster-0c51e7a9-ecb5-41c0-8d11-50b27c7098bf" {
+		}
+		"1fdc42fe-2385-4bdf-838b-f3dbc612b23d" [label="+echo_task1" color=orangered penwidth=1.0 shape=box]
+		subgraph "cluster-8edbb004-78d4-4866-9810-32c759e05382" {
+		}
+		"6b423918-2f25-4494-bc00-789d893173ea" [label="+echo_task2" color=orangered penwidth=1.0 shape=box]
+		subgraph "cluster-792bbf8a-f08a-4410-a565-282c0e173b5a" {
+		}
+		"87e66fe7-7390-4378-acaa-6076653af9bd" [label="+echo_task3" color=orangered penwidth=1.0 shape=box]
+		subgraph "cluster-935e837c-1f00-4491-955a-aff80652e428" {
+		}
+		"d9a39092-c290-4c32-add7-e1c491dbbb2e" [label="+run_query1
+queries/example.sql" color=blue penwidth=1.0 shape=box]
+		subgraph "cluster-23e0a1b6-e373-4073-9020-76a1d8849f99" {
+		}
+	}
+}
