@@ -1,1 +1,64 @@
-<A href="./graphs/project1/workflow2.html">workflow2 </A><BR><A href="./graphs/project1/workflow1.html">workflow1 </A><BR><A href="./graphs/project2/workflow3.html">workflow3 </A><BR>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1 id="-treasure-data-digdag-visualization-"><code>Treasure data digdag visualization</code></h1>
+</header>
+<div id="Intro">
+<p>Treasure data is a leading CDP platform and leverages dig-dag for data pipelines within itself. digdag is similar to airflow where we define tasks inside a dag
+and is available as an open source. The CDP is a powerful platform but unfortunately no easy way to visualize the pipelines which makes it hard for onboarding
+when there are some complex pipelines already built. So I had the below sequence of steps to solve this problem for myself.</p>
+</div>
+<BR>
+<h2 id="solution-approach">Solution Approach</h2>
+<ul>
+<li>Create Visualization</li>
+<li>Make it colorful and interactive</li>
+<li>Have the ability to navigate across workflows.</li>
+<li>Update the graph everytime there is a code change.</li>
+<li>Make it part of CICD</li>
+</ul>
+<div id="Image">
+<p><img src="./graphs/project1/workflow1.svg" alt=""></p>
+<!--<a><img src="./index.html" alt="Navigate to html"></a>-->
+</div>
+
+<h2 id="installation">Installation</h2>
+<pre><code class="lang-sh">pip <span class="hljs-keyword">install</span> -r requirements.txt
+</code></pre>
+
+<main>
+  <p>The workflows are below and the graphs are interactive: </p>
+  <ol class="LINKS">
+    <li><A href="./graphs/project1/workflow1.html">workflow1 </A></li>
+    <li><A href="./graphs/project1/workflow2.html">workflow2 </A></li>
+    <li><A href="./graphs/project2/workflow3.html">workflow3 </A></li>
+  </ol>
+</main>
+
+<h2 id="usage-example">Usage example</h2>
+<ul>
+  <li>Add the script to the root folder under which all digdag projects are listed.</li>
+  <li>Execute the python program to generate the graphs.</li>
+  <li>Build index.html similar to this.</li>
+  <li>Host as a static website.</li>
+</ul>
+<h4 id="todo">TODO</h4>
+<ul>
+  <li>Create github workflow to generate graphs when there are changes.</li>
+  <li>Identify the changes at the folder level </li>
+  <li>Execute the python script to build graph for each folder with a change</li>
+  <li>Commit the graphs back to the branch</li>
+</ul>
+
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/y-abe/digdag-graph">https://github.com/y-abe/digdag-graph</a></li>
+</ul>
+
+
+</body>
+</html>
