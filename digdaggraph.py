@@ -58,6 +58,7 @@ class Block:
 
 def load(root, data, filepath):
     root.penwidth="1.0"
+    root.href=""
     dirpath = "/".join(filepath.split("/")[:-1]) + "/"
 
     for key in data.keys():
@@ -104,6 +105,8 @@ def load(root, data, filepath):
             continue
         root.color = "firebrick1"
         root.penwidth="3.0"
+        if root.label == "Click to HomePage":
+            root.href = "../../index.html"
         block = root.append(key)
         load(block, data[key], filepath)
 
@@ -118,7 +121,7 @@ def generate_graph(input_filepath, output_dot_file):
     filepath = input_filepath
     dot = Digraph(format="svg", edge_attr={"color": "red"})
     dot2 = Digraph(format="cmapx", edge_attr={"color": "red"})
-    root = Block("root", "Click to HomePage", "brown", href="../../index.html")
+    root = Block("root", "Click to HomePage", "brown")
 
     with open(filepath) as f:
         yaml.add_constructor("!include", include_constructor)
@@ -128,12 +131,16 @@ def generate_graph(input_filepath, output_dot_file):
     root.draw(dot)
     root.draw(dot2)
     dot.render(output_dot_file)
-    dot2.render(output_dot_file)
+    print(dot.render(output_dot_file))
+    cmapx_file = dot2.render(output_dot_file)
     with open(output_dot_file + '.cmapx', 'r') as cmapx, open(output_dot_file + '.html', 'w') as fp:
         fp.write(f"<IMG SRC=\"{output_dot_file.split('/')[-1]}.svg\" USEMAP=\"#%3\" />")
         fp.writelines(l for l in cmapx)
         pass
     fp.close()
+    #To delete the cmapx file and the dot file
+    os.remove(cmapx_file)
+    os.remove(cmapx_file.replace(".cmapx",""))
     # with open("index.html", 'a', buffering=1) as html:
     #     relativePath = str(Path(output_dot_file).relative_to(Path(filepath).parent.parent))
     #     html.write(f"<A href=\"./{relativePath}.html\">{Path(output_dot_file).name} </A><BR>")
