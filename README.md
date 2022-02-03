@@ -12,6 +12,8 @@ when there are some complex pipelines already built. So I had the below sequence
 
 ![](./graphs/project1/workflow1.png)
 
+![Navigate to html](./index.html)
+
 ## Installation
 
 ```sh

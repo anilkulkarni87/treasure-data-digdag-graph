@@ -1,0 +1,16 @@
+timezone: America/Los_Angeles
+
+_export:
+  db_info:
+    !include : 'config/database.dig'
+    src: inside workflow1 dig file
+    env: Updated env in workflow file
+
++echo_task1:
+  _parallel: true
+
+  +echo_task1_child1:
+    echo>: this is Child task 1!
+
+  +echo_task1_child2:
+    echo>: this is Child task 2!

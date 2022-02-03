@@ -17,3 +17,6 @@ _export:
 
 +run_query1:
   td>: 'queries/example.sql'
+
++call_project3_workflow3:
+  require>: workflow3
