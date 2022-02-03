@@ -45,7 +45,7 @@ class Block:
 
     def draw(self, dot):
         dot.node(self.name, self.label, color=self.color, penwidth=str(self.penwidth), shape="box", href=self.href)
-        #penwidth = str(self.penwidth)
+        # penwidth = str(self.penwidth)
         prev = [self]
         with dot.subgraph(name=self.subgraph_name) as c:
             for block in self.subblocks:
@@ -57,12 +57,13 @@ class Block:
 
 
 def load(root, data, filepath):
-    root.penwidth="1.0"
-    root.href=""
+    root.penwidth = "1.0"
+    root.href = ""
     dirpath = "/".join(filepath.split("/")[:-1]) + "/"
-
+    if data is None:
+        data = {'Empty Task': 'This is empty dummy task'}
     for key in data.keys():
-        #print(f'{key} --> {data.get(key)}')
+        # print(f'{key} --> {data.get(key)}')
         if key == "timezone":
             root.color = "mediumspringgreen"
             block = root.append(data[key])
@@ -104,7 +105,7 @@ def load(root, data, filepath):
         if not key.startswith("+"):
             continue
         root.color = "firebrick1"
-        root.penwidth="3.0"
+        root.penwidth = "3.0"
         if root.label == "Click to HomePage":
             root.href = "../../index.html"
         block = root.append(key)
@@ -117,7 +118,7 @@ def include_constructor(loader: yaml.SafeLoader, node: yaml.nodes.ScalarNode) ->
 
 
 def generate_graph(input_filepath, output_dot_file):
-    #filepath = os.getcwd() + "/" + input_filepath
+    # filepath = os.getcwd() + "/" + input_filepath
     filepath = input_filepath
     dot = Digraph(format="svg", edge_attr={"color": "red"})
     dot2 = Digraph(format="cmapx", edge_attr={"color": "red"})
@@ -131,16 +132,16 @@ def generate_graph(input_filepath, output_dot_file):
     root.draw(dot)
     root.draw(dot2)
     dot.render(output_dot_file)
-    print(dot.render(output_dot_file))
+    #print(dot.render(output_dot_file))
     cmapx_file = dot2.render(output_dot_file)
     with open(output_dot_file + '.cmapx', 'r') as cmapx, open(output_dot_file + '.html', 'w') as fp:
-        fp.write(f"<IMG SRC=\"{output_dot_file.split('/')[-1]}.svg\" USEMAP=\"#%3\" />")
+        fp.write(f"<IMG SRC=\"{output_dot_file.split('/')[-1]}.svg\" USEMAP=\"#%3\"/>")
         fp.writelines(l for l in cmapx)
         pass
     fp.close()
-    #To delete the cmapx file and the dot file
+    # To delete the cmapx file and the dot file
     os.remove(cmapx_file)
-    os.remove(cmapx_file.replace(".cmapx",""))
+    os.remove(cmapx_file.replace(".cmapx", ""))
     # with open("index.html", 'a', buffering=1) as html:
     #     relativePath = str(Path(output_dot_file).relative_to(Path(filepath).parent.parent))
     #     html.write(f"<A href=\"./{relativePath}.html\">{Path(output_dot_file).name} </A><BR>")
@@ -152,15 +153,19 @@ def main():
     count = 0
     for path in Path(os.getcwd()).rglob('*.dig'):
         if "config" not in str(path):
+                #and "proj" not in str(path):
             input_file_path = path
-            output_dot_file = f"{os.getcwd()}/graphs/{path.parent.name}/{path.name.replace('.dig','')}"
-            # print(f"Input file path: {input_file_path}")
-            # print(f"Output file path: {output_dot_file}")
-            # print(Path(output_dot_file).relative_to(input_file_path.parent.parent))
+            output_dot_file = f"{os.getcwd()}/graphs/{path.parent.name}/{path.name.replace('.dig', '')}"
+            print(f'BEGIN generating graph for {input_file_path}')
+            # To check if the graph is already generated
+            # if not os.path.exists(str(input_file_path).replace("treasure-data-digdag-graph/",
+            #                                                    "treasure-data-digdag-graph/graphs/").replace(".dig",
+            #                                                                                                  ".svg")):
             generate_graph(input_filepath=str(input_file_path), output_dot_file=str(output_dot_file))
             count = count + 1
-            print(f'Completed generating graph for {input_file_path}')
+            print(f'COMPLETE generating graph for {input_file_path}')
     print(f'Graphs generated: {count}')
+
 
 if __name__ == "__main__":
     main()
