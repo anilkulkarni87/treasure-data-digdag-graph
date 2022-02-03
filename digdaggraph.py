@@ -118,7 +118,7 @@ def generate_graph(input_filepath, output_dot_file):
     filepath = input_filepath
     dot = Digraph(format="svg", edge_attr={"color": "red"})
     dot2 = Digraph(format="cmapx", edge_attr={"color": "red"})
-    root = Block("root", "root", "brown")
+    root = Block("root", "Click to HomePage", "brown", href="../../index.html")
 
     with open(filepath) as f:
         yaml.add_constructor("!include", include_constructor)
