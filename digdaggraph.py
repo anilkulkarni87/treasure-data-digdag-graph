@@ -118,7 +118,7 @@ def generate_graph(input_filepath, output_dot_file):
     filepath = input_filepath
     dot = Digraph(format="svg", edge_attr={"color": "red"})
     dot2 = Digraph(format="cmapx", edge_attr={"color": "red"})
-    root = Block("root", "root", "brown")
+    root = Block("root", "Click to HomePage", "brown", href="../../index.html")
 
     with open(filepath) as f:
         yaml.add_constructor("!include", include_constructor)
@@ -134,11 +134,11 @@ def generate_graph(input_filepath, output_dot_file):
         fp.writelines(l for l in cmapx)
         pass
     fp.close()
-    with open("index.html", 'a', buffering=1) as html:
-        relativePath = str(Path(output_dot_file).relative_to(Path(filepath).parent.parent))
-        html.write(f"<A href=\"./{relativePath}.html\">{Path(output_dot_file).name} </A><BR>")
-        pass
-    html.close()
+    # with open("index.html", 'a', buffering=1) as html:
+    #     relativePath = str(Path(output_dot_file).relative_to(Path(filepath).parent.parent))
+    #     html.write(f"<A href=\"./{relativePath}.html\">{Path(output_dot_file).name} </A><BR>")
+    #     pass
+    # html.close()
 
 
 def main():
