@@ -14,13 +14,19 @@ when there are some complex pipelines already built. So I had the below sequence
 </div>
 <BR>
 <h2 id="solution-approach">Solution Approach</h2>
-<ul>
+<ol>
 <li>Create Visualization</li>
 <li>Make it colorful and interactive</li>
+    <ol>
+      <li>Use Graphiviz to create dot diagram</li>
+      <li>Render svg and the cmapx</li>
+      <li>Create html file and embed svg under `img` tag </li>
+      <li>Insert the cmapx into the html after the img tag</li>
+    </ol>
 <li>Have the ability to navigate across workflows.</li>
 <li>Update the graph everytime there is a code change.</li>
 <li>Make it part of CICD</li>
-</ul>
+</ol>
 <div id="Image">
 <p><img src="./graphs/project1/workflow1.svg" alt=""></p>
 <!--<a><img src="./index.html" alt="Navigate to html"></a>-->
@@ -52,6 +58,11 @@ when there are some complex pipelines already built. So I had the below sequence
   <li>Identify the changes at the folder level </li>
   <li>Execute the python script to build graph for each folder with a change</li>
   <li>Commit the graphs back to the branch</li>
+</ul>
+
+<h3 id="github">Github Link</h3>
+<ul>
+<li><a href="https://github.com/anilkulkarni87/treasure-data-digdag-graph">All source code here</a></li>
 </ul>
 
 <h3 id="references">References</h3>
