@@ -13,6 +13,11 @@ schedule:
   _parallel: true
 
   +echo_task1_child1:
+    _export:
+      dest_tbl: dest_table_name
+      src_db: ${dbname}
+      src_tbl1: ${dbname}
+      src_tbl2: ${dbname}
     echo>: this is Child task 1!
 
   +echo_task1_child2:

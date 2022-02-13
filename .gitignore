@@ -5,6 +5,7 @@ __pycache__/
 .DS_Store
 */.DS_Store
 index_new.html
+old_digdaggraph.py
 .idea/
 # C extensions
 *.so
