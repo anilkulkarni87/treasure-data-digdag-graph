@@ -1,3 +1,5 @@
+!pip install cron-descriptor
+
 import logging
 import html
 import json
@@ -192,7 +194,8 @@ def get_workflow_link_from_filepath(filepath):
 
 def get_query_file_content(filepath, querypath):
     folder_name = get_project_folder_name_from_filepath(filepath=filepath)
-    query_file_absolute_path = f"{os.getcwd()}/{folder_name}/{querypath}"
+    query_file_absolute_path = "/content/content/project1/queries/example.sql"
+    # f"{os.getcwd()}/{folder_name}/{querypath}"
     query_tooltip_text = ""
     with open(query_file_absolute_path, "r") as myfile:
         query_tooltip_text = myfile.readlines()
